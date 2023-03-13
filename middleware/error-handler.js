@@ -10,6 +10,8 @@ const sendValidationError = (err) => {
   return new AppError(err.errors[key].message, 400);
 };
 
+const sendDuplicateError = () => new AppError('This line already exist', 400);
+
 const sendErrorProd = (err, res) => {
   if (err.isOperational) {
     res.status(err.errorCode).json({
@@ -48,6 +50,10 @@ const errorHandler = (err, _, res, next) => {
     }
     if (error.name === 'ValidationError') {
       error = sendValidationError(error);
+    }
+
+    if (error.code === 11000) {
+      error = sendDuplicateError();
     }
 
     sendErrorProd(error, res);
