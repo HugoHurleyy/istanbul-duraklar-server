@@ -1,3 +1,5 @@
+import slugify from 'slugify';
+
 class APIFeatures {
   constructor(query, queryObj) {
     this.queryObj = queryObj;
@@ -7,11 +9,16 @@ class APIFeatures {
   filter() {
     const queryParams = { ...this.queryObj };
 
-    const excludedFields = ['fields', 'sort'];
+    const excludedFields = ['fields', 'sort', 'search'];
 
     excludedFields.forEach((field) => delete queryParams[field]);
 
-    this.query = this.query.find(queryParams);
+    const formattedSearch = slugify(this?.queryObj?.search || '');
+
+    this.query = this.query.find({
+      ...queryParams,
+      searchQuery: { $regex: formattedSearch },
+    });
 
     return this;
   }

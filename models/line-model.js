@@ -41,6 +41,11 @@ const lineSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
+    searchQuery: {
+      type: String,
+      trim: true,
+      required: true,
+    },
   },
   { timestamps: true },
 );

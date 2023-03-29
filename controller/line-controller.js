@@ -1,3 +1,4 @@
+import slugify from 'slugify';
 import Line from '../models/line-model.js';
 import AppError from '../utils/app-error.js';
 import APIFeatures from '../utils/search-feature.js';
@@ -52,6 +53,24 @@ export const deleteLine = tryCatch(async (req, res, next) => {
   }
   res.status(204).json({
     status: 'success',
+    data: {
+      line,
+    },
+  });
+});
+
+export const searchLines = tryCatch(async (req, res, next) => {
+  const { query } = req.query;
+
+  const formattedSearch = slugify(query, { lower: true, trim: true });
+
+  const line = await Line.find({
+    searchQuery: { $regex: formattedSearch },
+  });
+
+  res.status(200).json({
+    status: 'success',
+    result: line.length,
     data: {
       line,
     },
