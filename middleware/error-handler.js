@@ -1,7 +1,7 @@
 import AppError from '../utils/app-error.js';
 
 const sendCastError = (err) => {
-  return new AppError(`Invalid ${err.path}: ${err.value}`, 400);
+  return new AppError(`Geçersiz ${err.path}: ${err.value}`, 400);
 };
 
 const sendValidationError = (err) => {
@@ -10,7 +10,7 @@ const sendValidationError = (err) => {
   return new AppError(err.errors[key].message, 400);
 };
 
-const sendDuplicateError = () => new AppError('This line already exist', 400);
+const sendDuplicateError = () => new AppError('Bu hattı zaten var', 400);
 
 const sendErrorProd = (err, res) => {
   if (err.isOperational) {
@@ -21,7 +21,8 @@ const sendErrorProd = (err, res) => {
   } else {
     res.status(500).json({
       status: 'error',
-      message: 'Something went very wrong',
+      message:
+        'Ooops! Bir şeyler ters gitti 💣🤯. Lütfen daha sonra tekrar deneyin',
     });
   }
 };

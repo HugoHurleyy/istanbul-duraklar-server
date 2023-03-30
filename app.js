@@ -8,7 +8,9 @@ const app = express();
 app.use(express.json());
 app.use('/api/v1/lines', lineRouter);
 app.all('*', (req, res, next) => {
-  next(new AppError(`Cant ' find (${req.originalUrl}) on this server`, 404));
+  next(
+    new AppError(`(${req.originalUrl}) bu url ait bir route bulunamadı`, 404),
+  );
 });
 app.use(errorHandler);
 
