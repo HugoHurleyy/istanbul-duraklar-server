@@ -2,9 +2,11 @@ import express from "express";
 import errorHandler from "./middleware/error-handler.js";
 import lineRouter from "./routes/line-routes.js";
 import AppError from "./utils/app-error.js";
+import cors from "cors";
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use("/api/v1/lines", lineRouter);
 app.all("*", (req, res, next) => {
