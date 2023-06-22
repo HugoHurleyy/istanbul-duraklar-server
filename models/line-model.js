@@ -1,64 +1,54 @@
-import mongoose from 'mongoose';
-import slugify from 'slugify';
+import mongoose from "mongoose";
 
 const lineSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, 'Lütfen bir hat ismi giriniz.'],
-      unique: [true, 'Bu hat zaten var.'],
+      required: [true, "Lütfen bir hat ismi giriniz."],
+      unique: [true, "Bu hat zaten var."],
       trim: true,
     },
     lineCode: {
       type: String,
-      required: [true, 'Lütfen bir hat kodu giriniz. ÖR=T4,M1A'],
-      maxlength: [3, 'Hat kodu 3 karakterden az veya eşit olmalıdır.'],
-      unique: [true, 'Bu hat zaten var.'],
+      required: [true, "Lütfen bir hat kodu giriniz. ÖR=T4,M1A"],
+      maxlength: [3, "Hat kodu 3 karakterden az veya eşit olmalıdır."],
+      unique: [true, "Bu hat zaten var."],
       trim: true,
     },
     type: {
       type: String,
       required: [
         true,
-        'Lütfen örnekte verilen tipte bir tür giriniz. ÖR=tram,metro,cable-car,funicular,suburban,bus-rapid',
+        "Lütfen örnekte verilen tipte bir tür giriniz. ÖR=tram,metro,cable-car,funicular,suburban,bus-rapid",
       ],
       enum: {
         values: [
-          'tram',
-          'metro',
-          'cable-car',
-          'funicular',
-          'suburban',
-          'bus-rapid',
+          "tram",
+          "metro",
+          "cable-car",
+          "funicular",
+          "suburban",
+          "bus-rapid",
+          "bus",
         ],
       },
     },
     stops: {
-      type: [Object],
+      type: {},
       required: true,
     },
     thumbnail: {
       type: String,
-      required: [true, 'Lütfen hatta ait bir küçük resim ekleyiniz.'],
-    },
-    stopCount: {
-      type: Number,
-      default: 0,
+      required: [true, "Lütfen hatta ait bir küçük resim ekleyiniz."],
     },
     searchQuery: {
       type: String,
       trim: true,
     },
   },
-  { timestamps: true },
+  { timestamps: true, collection: "AllLines" }
 );
 
-lineSchema.pre('save', function (next) {
-  this.stopCount = this.stops.length;
-  this.searchQuery = slugify(`${this.name} ${this.lineCode}`, { lower: true });
-  next();
-});
-
-const Line = mongoose.model('Line', lineSchema);
+const Line = mongoose.model("AllLines", lineSchema);
 
 export default Line;
