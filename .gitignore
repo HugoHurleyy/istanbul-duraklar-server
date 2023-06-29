@@ -3,3 +3,12 @@ node_modules/
 .prettierrc
 .eslintrc.json
 yarn.lock
+controller/
+middleware/
+models/
+routes/
+utils/
+yarn.lock
+app.js
+server.js
+package.json
