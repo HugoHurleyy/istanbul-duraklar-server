@@ -1,6 +1,8 @@
 # `GET` all lines
 
-[Click to see live example](https://istanbul-duraklar.onrender.com/api/v1/lines)
+
+
+[Click to see live example](https://istanbulduraklar.azurewebsites.net/api/v1/lines)
 
 
 Example Response:
