@@ -1507,7 +1507,7 @@ Example Response:
 ```
 
 
-# `/search=kadıköy` Search
+# `/?search=kadıköy` Search
 
 You can make a search by writing name of the line or line code
 
