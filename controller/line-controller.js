@@ -30,27 +30,3 @@ export const getLine = tryCatch(async (req, res) => {
     },
   });
 });
-
-export const postLine = tryCatch(async (req, res) => {
-  const { body } = req;
-
-  const line = await Line.create(body);
-
-  res.status(200).json({
-    status: "success",
-    data: line || [],
-  });
-});
-
-export const getStops = tryCatch(async (req, res) => {
-  const data = await Line.aggregate([
-    {
-      $unwind: "$stops",
-    },
-  ]);
-
-  res.status(200).json({
-    status: "success",
-    data,
-  });
-});

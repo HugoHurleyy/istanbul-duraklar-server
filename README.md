@@ -1,11 +1,9 @@
 # `GET` all lines
 
-
-
-[Click to see live example](https://istanbulduraklar.azurewebsites.net/api/v1/lines)
-
+[Click to see live example](https://istanbul-duraklar.onrender.com/api/v1/lines)
 
 Example Response:
+
 ```json
 "status": "success",
 "result": 24,
@@ -266,13 +264,9 @@ Example Response:
   ]
 ```
 
-
 # `/?fields=name,stops` get selected fields
 
-
-
-[Click to see live example](https://istanbulduraklar.azurewebsites.net/api/v1/lines?fields=name,stops)
-
+[Click to see live example](https://istanbul-duraklar.onrender.com/api/v1/lines?fields=name,stops)
 
 Example Response:
 
@@ -530,12 +524,10 @@ Example Response:
 
 # `/?lineCode=36T` or `/?type=bus&lineCode=36T` filter by any field you want
 
-
-
-[Click to see live example](https://istanbulduraklar.azurewebsites.net/api/v1/lines?type=bus&lineCode=36T)
-
+[Click to see live example](https://istanbul-duraklar.onrender.com/api/v1/lines?type=bus&lineCode=36T)
 
 Example Response:
+
 ```json
 {
   "status": "success",
@@ -1126,15 +1118,11 @@ Example Response:
 }
 ```
 
-
 # `/?page=2&limit=20` Paginate
 
 By default limit is set to 50 but you can change it setting limit property
 
-
-
-[Click to see live example](https://istanbulduraklar.azurewebsites.net/api/v1/lines?page=2&limit=30)
-
+[Click to see live example](https://istanbul-duraklar.onrender.com/api/v1/lines?page=2&limit=30)
 
 Example Response:
 
@@ -1506,14 +1494,11 @@ Example Response:
 ]
 ```
 
-
 # `/?search=kadıköy` Search
 
 You can make a search by writing name of the line or line code
 
-
-[Click to see live example](https://istanbulduraklar.azurewebsites.net/api/v1/lines?search=kadıköy)
-
+[Click to see live example](https://istanbul-duraklar.onrender.com/api/v1/lines?search=kadıköy)
 
 Example Response:
 
@@ -1749,5 +1734,3 @@ Example Response:
 ]
 
 ```
-
-
