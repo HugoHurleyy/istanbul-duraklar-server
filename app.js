@@ -3,7 +3,9 @@ import errorHandler from "./middleware/error-handler.js";
 import lineRouter from "./routes/line-routes.js";
 import AppError from "./utils/app-error.js";
 import dotenv from "dotenv";
+import cors from "cors";
 
+cors();
 dotenv.config();
 
 const app = express();
